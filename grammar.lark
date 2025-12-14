@@ -1,0 +1,17 @@
+%import common.NEWLINE -> _NL
+%import common.WS_INLINE
+%ignore WS_INLINE
+
+start: (_NL | instruction)*
+
+instruction: load
+           | read
+           | write
+           | uminus
+
+load: "LOAD" INT "," INT "," INT
+read: "READ" INT "," INT "," INT "," INT
+write: "WRITE" INT "," INT "," INT "," INT
+uminus: "UMINUS" INT "," INT "," INT
+
+INT: /0|[1-9]\d*/
